@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="Letterfall - A falling-block word puzzle game. Stack letters, build words, clear the board.">
+  <title>Letterfall</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50' y='65' text-anchor='middle' font-size='60' font-family='monospace' font-weight='bold' fill='%23fbbf24'>L</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="hud">
+      <div class="hud-item">
+        <div class="hud-label">Score</div>
+        <div class="hud-value" id="score">0</div>
+      </div>
+      <div class="hud-item">
+        <div class="hud-label">Level</div>
+        <div class="hud-value" id="level">1</div>
+      </div>
+      <div class="hud-item">
+        <div class="hud-label">Words</div>
+        <div class="hud-value" id="words">0</div>
+      </div>
+      <div class="hud-item next-tile">
+        <div class="hud-label">Next</div>
+        <div class="next-tile-display" id="nextTile">-</div>
+      </div>
+    </header>
+
+    <main class="game-area">
+      <canvas id="board" width="320" height="560" aria-label="Game board"></canvas>
+      <div id="overlay" class="overlay hidden">
+        <div class="overlay-content">
+          <h1 id="overlayTitle">Letterfall</h1>
+          <p id="overlaySubtitle">Stack letters. Build words. Don't let the board fill up.</p>
+          <div id="howToPlay">
+            <h3>How to Play</h3>
+            <ul>
+              <li><strong>Move:</strong> Arrow keys, A/D, or drag</li>
+              <li><strong>Drop:</strong> Down arrow, S, or swipe down</li>
+              <li><strong>Hard drop:</strong> Space</li>
+              <li><strong>Clear word:</strong> Tap or click highlighted letters</li>
+              <li><strong>Goal:</strong> Form 3+ letter words horizontally or vertically</li>
+            </ul>
+          </div>
+          <div id="finalStats" class="hidden">
+            <div class="stat-row"><span>Final Score:</span> <strong id="finalScore">0</strong></div>
+            <div class="stat-row"><span>Words Cleared:</span> <strong id="finalWords">0</strong></div>
+            <div class="stat-row"><span>Best Word:</span> <strong id="finalBest">-</strong></div>
+            <div class="stat-row"><span>High Score:</span> <strong id="finalHigh">0</strong></div>
+          </div>
+          <button id="startBtn" class="btn-primary">Start Game</button>
+        </div>
+      </div>
+    </main>
+
+    <div class="touch-controls" id="touchControls">
+      <button class="touch-btn" data-action="left" aria-label="Move left">◀</button>
+      <button class="touch-btn" data-action="drop" aria-label="Soft drop">▼</button>
+      <button class="touch-btn" data-action="hard" aria-label="Hard drop">⤓</button>
+      <button class="touch-btn" data-action="right" aria-label="Move right">▶</button>
+    </div>
+
+    <div class="footer-hud">
+      <div id="message" class="message"></div>
+      <button id="pauseBtn" class="btn-secondary" aria-label="Pause">⏸ Pause</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
